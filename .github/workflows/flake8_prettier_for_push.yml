@@ -34,5 +34,11 @@ jobs:
     - name: Install Prettier
       run: npm install --global prettier
 
-    - name: Run Prettier
-      run: prettier --check "**/*.js"
+    - name: Run Prettier if files exist
+      run: |
+        files=$(find . -name "*.js" -o -name "*.jsx" -o -name "*.ts" -o -name "*.tsx" -o -name "*.json" -o -name "*.html" -o -name "*.css")
+        if [ -n "$files" ]; then
+          prettier --check "**/*.{js,jsx,ts,tsx,json,html,css}"
+        else
+          echo "No matching files found. Skipping Prettier check."
+        fi
