@@ -15,6 +15,7 @@ class InfisicalSecretsService:
     """
     A class to handle interactions with the Infisical Secrets API.
     """
+
     def __init__(self):
         self.client = InfisicalSDKClient(host="https://app.infisical.com")
         self.client.auth.universal_auth.login(
