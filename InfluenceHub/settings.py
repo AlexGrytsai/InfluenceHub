@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from InfluenceHub.secrets import InfisicalSecretsService
+
+secret = InfisicalSecretsService()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,9 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-nco=#p0dpb955!s$-id6s8n6v)b$c)%06h)+na9q9(7$pj(*sy"
-)
+SECRET_KEY = secret.get_secret("SECRET-KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
